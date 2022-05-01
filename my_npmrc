@@ -1,0 +1,2 @@
+@raman:registry=https://nexus.testing.graviontech.com/repository/npm-private/
+//nexus.testing.graviontech.com/repository/npm-private/:_authToken=NpmToken.$NEXUS_NPM_TOKEN

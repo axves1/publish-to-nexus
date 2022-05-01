@@ -1,0 +1,9 @@
+name: 'Publish to Nexus action'
+description: 'Publish npm repository to Nexus registry'
+author: 'Alexey Veselov'
+
+runs:
+  using: "composite"
+  steps:
+      - run: cat $GITHUB_ACTION_PATH/my_npmrc >> .npmrc && npm install && npm run build && npm publish
+        shell: bash
