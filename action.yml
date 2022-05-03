@@ -1,5 +1,5 @@
 name: "Publish to Nexus action"
-description: "Publish npm repository to Nexus registry"
+description: "Publish npm repository to Nexus registry in @raman scope"
 author: "Alexey Veselov"
 
 runs:
@@ -17,5 +17,5 @@ runs:
       - run: npm run build 
         shell: bash
 
-      - run: npm publish
+      - run: npm publish --scope=@raman
         shell: bash
