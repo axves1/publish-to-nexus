@@ -1,14 +1,21 @@
-name: 'Publish to Nexus action'
-description: 'Publish npm repository to Nexus registry'
-author: 'Alexey Veselov'
+name: "Publish to Nexus action"
+description: "Publish npm repository to Nexus registry"
+author: "Alexey Veselov"
 
 runs:
   using: "composite"
   steps:
       - run: |
+          echo "::notice::Write Nexus registry credentials to .npmrc"
           echo "@raman:registry=https://nexus.testing.graviontech.com/repository/npm-private/" >> .npmrc
           echo "//nexus.testing.graviontech.com/repository/npm-private/:_authToken=NpmToken.${{ env.NEXUS_NPM_TOKEN }}" >> .npmrc
-          cat .npmrc
-        name: "Write Nexus credentials to .npmrc"
-        #cat $GITHUB_ACTION_PATH/my_npmrc >> .npmrc && npm install && npm run build && npm publish
+        shell: bash
+        
+      - run: npm install
+        shell: bash
+        
+      - run: npm run build 
+        shell: bash
+
+      - run: npm publish
         shell: bash
